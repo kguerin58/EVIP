@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BC2 Road Course – Smart Redirect</title>
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; margin: 0; padding: 2rem; background:#0b1b2b; color:#fff; }
+    .card { max-width: 760px; margin: 0 auto; background:#132940; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    h1 { margin-top: 0; font-size: 1.4rem; }
+    .btns { display:flex; flex-wrap:wrap; gap: .75rem; margin-top: 1rem; }
+    a.btn { background:#2ea043; color:#fff; padding:.9rem 1rem; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
+    a.secondary { background:#35597a; }
+    .small { opacity:.8; font-size:.9rem; }
+    code { background:#0f2136; padding:.2rem .4rem; border-radius:6px; }
+  </style>
+  <script>
+    (function(){
+      var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      var isAndroid = /Android/i.test(ua);
+      var isiOS = /iPhone|iPad|iPod/i.test(ua);
+      var googleUrl = 'https://www.google.com/maps/dir/?api=1&origin=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&destination=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&travelmode=driving&waypoints=13th+St+%26+Dale+Ave%2C+Benton+City%2C+WA|Webber+Canyon+Rd+%26+Badger+Rd%2C+Benton+County%2C+WA|Dallas+Rd+%26+I-82%2C+Richland%2C+WA|I-82+Exit+96%2C+WA|7th+St+%26+River+Rd%2C+Benton+City%2C+WA|Hwy+225+%26+Accord+Rd%2C+Benton+City%2C+WA|W+Roza+Rd+%26+Kelly+Rd%2C+Benton+City%2C+WA|Thomas+Rd+%26+W+Highland+Ext+Rd%2C+Benton+City%2C+WA|Old+Inland+Empire+Hwy+%26+13th+St%2C+Benton+City%2C+WA';
+      var appleUrl = 'https://maps.apple.com/directions?source=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&destination=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&waypoint=13th+St+%26+Dale+Ave%2C+Benton+City%2C+WA&waypoint=Webber+Canyon+Rd+%26+Badger+Rd%2C+Benton+County%2C+WA&waypoint=Dallas+Rd+%26+I-82%2C+Richland%2C+WA&waypoint=I-82+Exit+96%2C+WA&waypoint=7th+St+%26+River+Rd%2C+Benton+City%2C+WA&waypoint=Hwy+225+%26+Accord+Rd%2C+Benton+City%2C+WA&waypoint=W+Roza+Rd+%26+Kelly+Rd%2C+Benton+City%2C+WA&waypoint=Thomas+Rd+%26+W+Highland+Ext+Rd%2C+Benton+City%2C+WA&waypoint=Old+Inland+Empire+Hwy+%26+13th+St%2C+Benton+City%2C+WA&map=driving';
+
+      // Choose URL
+      var target = isiOS ? appleUrl : (isAndroid ? googleUrl : null);
+
+      // Try to redirect quickly
+      function go(){ if(target) window.location.replace(target); }
+      // Give the DOM something to update first
+      setTimeout(go, 150);
+
+      // Expose for manual tap
+      window._links = { googleUrl: googleUrl, appleUrl: appleUrl };
+    })();
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>BC2 Road Course</h1>
+    <p class="small">This page detects your device and opens the route in your maps app. If it doesn’t auto‑open in ~2 seconds, tap a button below.</p>
+    <div class="btns">
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&destination=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&travelmode=driving&waypoints=13th+St+%26+Dale+Ave%2C+Benton+City%2C+WA|Webber+Canyon+Rd+%26+Badger+Rd%2C+Benton+County%2C+WA|Dallas+Rd+%26+I-82%2C+Richland%2C+WA|I-82+Exit+96%2C+WA|7th+St+%26+River+Rd%2C+Benton+City%2C+WA|Hwy+225+%26+Accord+Rd%2C+Benton+City%2C+WA|W+Roza+Rd+%26+Kelly+Rd%2C+Benton+City%2C+WA|Thomas+Rd+%26+W+Highland+Ext+Rd%2C+Benton+City%2C+WA|Old+Inland+Empire+Hwy+%26+13th+St%2C+Benton+City%2C+WA">Open in Google Maps</a>
+      <a class="btn secondary" href="https://maps.apple.com/directions?source=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&destination=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&waypoint=13th+St+%26+Dale+Ave%2C+Benton+City%2C+WA&waypoint=Webber+Canyon+Rd+%26+Badger+Rd%2C+Benton+County%2C+WA&waypoint=Dallas+Rd+%26+I-82%2C+Richland%2C+WA&waypoint=I-82+Exit+96%2C+WA&waypoint=7th+St+%26+River+Rd%2C+Benton+City%2C+WA&waypoint=Hwy+225+%26+Accord+Rd%2C+Benton+City%2C+WA&waypoint=W+Roza+Rd+%26+Kelly+Rd%2C+Benton+City%2C+WA&waypoint=Thomas+Rd+%26+W+Highland+Ext+Rd%2C+Benton+City%2C+WA&waypoint=Old+Inland+Empire+Hwy+%26+13th+St%2C+Benton+City%2C+WA&map=driving">Open in Apple Maps</a>
+    </div>
+    <p class="small" style="margin-top:1rem">Having trouble? Copy this link into your browser:<br>
+      <code id="g">https://www.google.com/maps/dir/?api=1&origin=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&destination=1304+Dale+Ave%2C+Benton+City%2C+WA+99320&travelmode=driving&waypoints=13th+St+%26+Dale+Ave%2C+Benton+City%2C+WA|Webber+Canyon+Rd+%26+Badger+Rd%2C+Benton+County%2C+WA|Dallas+Rd+%26+I-82%2C+Richland%2C+WA|I-82+Exit+96%2C+WA|7th+St+%26+River+Rd%2C+Benton+City%2C+WA|Hwy+225+%26+Accord+Rd%2C+Benton+City%2C+WA|W+Roza+Rd+%26+Kelly+Rd%2C+Benton+City%2C+WA|Thomas+Rd+%26+W+Highland+Ext+Rd%2C+Benton+City%2C+WA|Old+Inland+Empire+Hwy+%26+13th+St%2C+Benton+City%2C+WA</code>
+    </p>
+    <noscript>
+      <p>JavaScript is disabled. Use one of the links above.</p>
+    </noscript>
+  </div>
+</body>
+</html>
